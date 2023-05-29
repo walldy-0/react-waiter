@@ -1,7 +1,10 @@
+import Tables from '../../features/Tables/Tables';
+
 const TablesAll = () => {
   return (
     <div>
-      Tables all
+      <h1>All tables</h1>
+      <Tables />
     </div>
   );
 };
