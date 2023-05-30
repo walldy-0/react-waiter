@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Form, Row, Col, FormGroup, Button } from "react-bootstrap";
 import styles from './Table.module.scss';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Table = (props) => {
+  const { register, handleSubmit: validate, formState: {errors}} = useForm();
+  const navigate = useNavigate();
   const [status, setStatus] = useState(props.table.status);
   const [peopleAmount, setPeopleAmount] = useState(props.table.peopleAmount);
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(props.table.maxPeopleAmount);
@@ -21,6 +25,7 @@ const Table = (props) => {
             controlid='peopleAmount'
             className={styles.peopleAmount}
             value={peopleAmount}
+            onFocus={e => e.target.select()}
             onChange={e => setPeopleAmount(e.target.value)}>
           </Form.Control>
           <span> / </span>
@@ -28,6 +33,7 @@ const Table = (props) => {
             controlid='maxPeopleAmount'
             className={styles.peopleAmount}
             value={maxPeopleAmount}
+            onFocus={e => e.target.select()}
             onChange={e => setMaxPeopleAmount(e.target.value)}>
           </Form.Control>
         </Col>
@@ -39,6 +45,7 @@ const Table = (props) => {
             controlid='bill'
             className={styles.peopleAmount}
             value={bill}
+            onFocus={e => e.target.select()}
             onChange={e => setBill(e.target.value)}>
           </Form.Control>
         </Col>
